@@ -1,0 +1,81 @@
+{
+  "name": "@renec/api",
+  "description": "Renec - API Service",
+  "version": "0.0.0",
+  "author": "Bao Tran",
+  "private": true,
+  "license": "MIT",
+  "files": [
+    "dist",
+    "config.yml",
+    "migrations",
+    "k8s",
+    "Dockerfile",
+    "public",
+    "credentials"
+  ],
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "scripts": {
+    "clean": "rimraf -rf dist",
+    "purge": "rimraf -rf node_modules",
+    "format": "prettier \"./src/**/*.ts\" --ignore-path ./.prettierignore --write",
+    "lint": "eslint --fix \"./src/**/*.ts\"",
+    "prebuild": "yarn clean",
+    "prepublishOnly": "yarn build",
+    "dev": "nest start --watch -p tsconfig.json",
+    "build": "nest build -p tsconfig.json",
+    "serve": "node dist/main",
+    "dep:upgrade": "ncu -p yarn -f /^@joktec*/ -u",
+    "deploy": "publish-helm --chart-dir ./k8s/chart",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:cov": "jest --coverage",
+    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
+    "test:e2e": "jest --config ./test/jest-e2e.json"
+  },
+  "dependencies": {
+    "@joktec/core": "^0.0.56",
+    "@joktec/http": "^0.0.55",
+    "@joktec/mongo": "^0.0.74",
+    "@joktec/notifier": "^0.0.54",
+    "@nestjs/platform-socket.io": "^9.4.1",
+    "@nestjs/testing": "^9.4.0",
+    "@nestjs/websockets": "^9.4.1",
+    "cheerio": "^1.0.0-rc.10",
+    "dot-object": "^2.1.4",
+    "gravatar": "^1.8.2",
+    "i18n": "^0.15.1",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.4",
+    "socket.io": "^4.6.1"
+  },
+  "devDependencies": {
+    "@types/cheerio": "^0.22.31",
+    "@types/dot-object": "^2.1.2",
+    "@types/gravatar": "^1.8.3",
+    "@types/i18n": "^0.13.6",
+    "@types/lodash": "^4.14.194"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "prettier --write --ignore-path ./.prettierignore",
+      "eslint --fix"
+    ]
+  },
+  "jest": {
+    "passWithNoTests": true,
+    "preset": "ts-jest",
+    "rootDir": "src",
+    "transform": {
+      "^.+\\.(t|s)s$": "ts-jest"
+    },
+    "coverageDirectory": "<rootDir>/../coverage/",
+    "collectCoverageFrom": [
+      "**/*.{ts,js}",
+      "!**/index.ts",
+      "!**/*.{d,enum}.ts"
+    ]
+  }
+}

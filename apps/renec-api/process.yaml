@@ -1,0 +1,11 @@
+apps:
+  - script: "./dist/main.js"
+    name: '@lf/api'
+    watch: ["dist"]
+    watch_delay: 1000
+    instances: -1
+    exec_mode: cluster
+    output: './logs/lf-api.log'
+    error: './logs/lf-api.error.log'
+    log: './logs/lf-api.all.log'
+    merge_logs: true

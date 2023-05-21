@@ -1,0 +1,40 @@
+gateway:
+  port: 9010
+  swagger:
+    server: http://localhost:9010
+  static:
+    excludePath: [ 'swagger' ]
+
+log:
+  level: debug
+
+misc:
+  cdnUrl: http://127.0.0.1:9000/lostnfound
+
+guard:
+  pending: 30
+  limit: 5
+  secretKey: XXX
+  expired: 30 days
+  skipOtp: true
+  apiKey: YYY
+
+notifier:
+  isAlwaysUseFCM: true
+  gcm:
+    id: XXX
+
+i18n:
+  locales: [ vi, en ]
+
+http:
+  timeout: 30000
+
+mongo:
+  host: localhost
+  port: 27017
+  username: joktec
+  password: joktec123
+  database: sample_db
+  connectTimeout: 20000
+  directConnection: true
