@@ -39,7 +39,11 @@ const VideoItem: React.FC<Props> = ({ video, profile }) => {
     <div className="w-full rounded overflow-hidden shadow-lg bg-white dark:bg-gray-800">
       <img className="w-full" src={video.thumbnail} alt={video.title} />
       <div className="px-6 py-4">
-        <div className="font-bold text-xl mb-2 text-black dark:text-white">{video.title}</div>
+        <div className="font-bold text-xl mb-2 text-black dark:text-white">
+          <a href={video.link} target="_blank" rel="noopener noreferrer">
+            {video.title}
+          </a>
+        </div>
         <div className="text-gray-500 text-sm">Shared by: {video?.author?.fullName || 'Unknown'}</div>
         <div className="flex items-center mt-2 mb-2">
           <p className="text-gray-500 mr-2 flex items-center">

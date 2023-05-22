@@ -5,6 +5,7 @@ export interface Video {
   title: string;
   description: string;
   thumbnail: string;
+  link: string;
   author?: Profile;
   likeByIds: string[];
   dislikeByIds: string[];
