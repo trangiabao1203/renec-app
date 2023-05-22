@@ -5,7 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Header from '@/components/Header';
 import VideoList from '@/components/VideoList';
 import { Profile } from '@/models/profile';
-import PushNotificationComponent from '@/components/PushNotificationComponent';
+// import PushNotificationComponent from '@/components/PushNotificationComponent';
 
 const Home: React.FC = () => {
   const [profile, setProfile] = React.useState<Profile | null>(null);
@@ -20,7 +20,7 @@ const Home: React.FC = () => {
       <Header profile={profile} setProfile={setProfile} />
       <VideoList profile={profile} />
       <ToastContainer />
-      <PushNotificationComponent />
+      {/*<PushNotificationComponent />*/}
     </div>
   );
 };

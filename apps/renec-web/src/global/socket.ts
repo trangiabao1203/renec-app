@@ -4,7 +4,7 @@ let socket: Socket;
 
 export const initSocket = (): Socket => {
   if (!socket) {
-    socket = io('http://localhost:9010', {
+    socket = io(String(process.env.apiUrl), {
       transports: ['websocket'],
     });
   }

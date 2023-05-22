@@ -5,7 +5,7 @@ const proxyApiRequest = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     const response = await axios({
       method: req.method,
-      url: `http://localhost:9010${req.url}`,
+      url: `${process.env.apiUrl}${req.url}`,
       data: req.body,
       headers: req.headers,
     });

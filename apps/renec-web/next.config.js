@@ -1,20 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Enable PostCSS
-  // webpack(config) {
-  //   config.module.rules.push({
-  //     test: /\.css$/i,
-  //     use: ['style-loader', 'css-loader', 'postcss-loader'],
-  //   });
-  //
-  //   return config;
-  // },
-
+  env: {
+    webUrl: 'http://localhost:3000',
+    apiUrl: 'http://localhost:9010',
+  },
   async rewrites() {
     return [
       {
         source: '/api/:path*',
-        destination: 'http://localhost:9010/:path*',
+        destination: `http://localhost:9010/:path*`,
       },
     ];
   },

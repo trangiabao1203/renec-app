@@ -3,9 +3,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
 
 const axiosInstance = axios.create({
-  // Set your base URL and other configurations here
-  baseURL: 'http://localhost:3000/api',
-  // Add other axios configurations as needed
+  baseURL: `${process.env.webUrl}/api`,
 });
 
 axiosInstance.interceptors.request.use(
@@ -22,7 +20,7 @@ axiosInstance.interceptors.request.use(
       return Promise.reject(error);
     }
   );
-  
+
   axiosInstance.interceptors.response.use(
     (response) => {
       // Modify response data or handle common success cases
@@ -42,7 +40,7 @@ axiosInstance.interceptors.request.use(
           localStorage.setItem('profile', '{}');
         }
         return Promise.resolve(true);
-      } 
+      }
 
       // No response received, show default error toast
       console.error('Response error:', error);

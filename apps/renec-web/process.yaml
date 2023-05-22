@@ -1,0 +1,10 @@
+apps:
+  - script: "npm"
+    args: start
+    name: '@renec/web'
+    instances: -1
+    exec_mode: cluster
+    output: './logs/renec-web.log'
+    error: './logs/renec-web.error.log'
+    log: './logs/renec-web.all.log'
+    merge_logs: true
