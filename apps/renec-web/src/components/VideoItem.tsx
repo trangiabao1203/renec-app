@@ -29,7 +29,7 @@ const VideoItem: React.FC<Props> = ({ video, profile }) => {
 
   const handleOnVote = async (vote: VoteType) => {
     const newVideo = await postRepository.vote(video._id, vote);
-    if(newVideo === null) return;
+    if (newVideo === null) return;
     setVote(vote);
     video.likeByIds = newVideo.likeByIds;
     video.dislikeByIds = newVideo.dislikeByIds;
@@ -56,9 +56,11 @@ const VideoItem: React.FC<Props> = ({ video, profile }) => {
           <span className="font-bold">Description</span>: <span className="italic">{video.description}</span>
         </p>
       </div>
-      {!!profile && <div className="px-6 py-2 flex justify-end mb-2">
-        <VoteButton voted={vote} onVote={(v) => handleOnVote(v)}></VoteButton>
-      </div>}
+      {!!profile && (
+        <div className="px-6 py-2 flex justify-end mb-2">
+          <VoteButton voted={vote} onVote={v => handleOnVote(v)}></VoteButton>
+        </div>
+      )}
     </div>
   );
 };

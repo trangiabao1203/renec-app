@@ -15,12 +15,11 @@ const LoginModal: React.FC<LoginPopupProps> = ({ open, onClose, onSwitchToRegist
     e.preventDefault();
     const email = (e.target as any).email.value;
     const password = (e.target as any).password.value;
-    authRepository.login(email, password).then((res) => {
+    authRepository.login(email, password).then(res => {
       if (res) {
         onClose();
       }
-    }
-    );
+    });
   };
 
   return (

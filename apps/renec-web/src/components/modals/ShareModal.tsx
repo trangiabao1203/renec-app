@@ -32,7 +32,7 @@ const ShareModal: React.FC<ShareModalProps> = ({ open, onClose }) => {
   };
 
   const handleShare = async () => {
-    if(videoInfo === null) return;
+    if (videoInfo === null) return;
     await postRepository.shared(videoInfo);
   };
 
@@ -86,8 +86,11 @@ const ShareModal: React.FC<ShareModalProps> = ({ open, onClose }) => {
             </div>
           )}
           <div className="flex justify-end">
-            <button type="submit" className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
-            disabled={!url && !videoInfo}>
+            <button
+              type="submit"
+              className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
+              disabled={!url && !videoInfo}
+            >
               Share
             </button>
           </div>

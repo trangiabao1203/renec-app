@@ -59,22 +59,23 @@ const Header: React.FC<Props> = ({ profile, setProfile }) => {
           <h1 className="text-white text-lg font-bold ml-2">Share Video Youtube</h1>
         </div>
         {profile ? (
-        <div className="items-right">
-          <div className="text-white mr-4">
-            Welcome, {profile.fullName}
+          <div className="items-right">
+            <div className="text-white mr-4">Welcome, {profile.fullName}</div>
+            <button className="text-white bg-blue-500 hover:bg-blue-600 py-2 px-4 rounded" onClick={handleShareClick}>
+              Share Video
+            </button>
+            <button
+              className="text-white bg-red-500 hover:bg-red-600 py-2 px-4 rounded ml-4"
+              onClick={handleLogoutClick}
+            >
+              Logout
+            </button>
           </div>
-          <button className="text-white bg-blue-500 hover:bg-blue-600 py-2 px-4 rounded" onClick={handleShareClick}>
-            Share Video
+        ) : (
+          <button className="text-white bg-blue-500 hover:bg-blue-600 py-2 px-4 rounded" onClick={handleLoginClick}>
+            Login
           </button>
-          <button className="text-white bg-red-500 hover:bg-red-600 py-2 px-4 rounded ml-4" onClick={handleLogoutClick}>
-            Logout
-          </button>
-        </div>
-      ) : (
-        <button className="text-white bg-blue-500 hover:bg-blue-600 py-2 px-4 rounded" onClick={handleLoginClick}>
-          Login
-        </button>
-      )}
+        )}
         <LoginModal open={loginOpen} onClose={handleClose} onSwitchToRegister={handleSwitchToRegister} />
         <RegisterModal open={registerOpen} onClose={handleClose} onSwitchToLogin={handleSwitchToLogin} />
         <ShareModal open={shareOpen} onClose={handleClose} />

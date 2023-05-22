@@ -53,12 +53,6 @@ export class AppModule implements NestModule {
     consumer
       .apply(AuthMiddleware)
       .exclude({ path: 'posts', method: RequestMethod.GET })
-      .forRoutes(
-        UserController,
-        ProfileController,
-        PostController,
-        SessionController,
-        HelperController,
-      );
+      .forRoutes(UserController, ProfileController, PostController, SessionController, HelperController);
   }
 }

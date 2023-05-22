@@ -65,6 +65,8 @@ To learn more about monorepos, Lerna, and Nx, you can refer to the following res
 - [Lerna Documentation](https://lerna.js.org/docs/getting-started)
 - [Nx Documentation](https://nx.dev/getting-started/intro)
 
+Beside that, you can discovery my library for monorepo development at: [JokTec Monorepo](https://github.com/joktec/joktec-monorepo)
+
 ## Getting Started
 ### Installation & Configuration
 To get the project up and running on your local machine, follow these steps:
@@ -99,7 +101,7 @@ API_URL=https://localhost:9010
 ```
 
 ### Running the Project
-In this project, you will see 2 packages in apps directory:
+In this project structure, you will see 2 packages in apps directory:
 - renec-api: This is the backend API server develop with NestJS
 - renec-web: This is the frontend web application develop with NextJS
 
@@ -114,6 +116,25 @@ Explaining the command:
 - In the root of package.json file, there is a script with name dev, this script will run the command yarn dev as parallel for any packages have the same name script
 - You can also specify the package name to run the command, for example: yarn dev --scope @renec/api
 - You can do a similar thing with other scripts, for example: yarn build --scope @renec/api
+
+## Testing
+### Unit Test
+To run unit tests, you can use the following command:
+```bash
+yarn test --scope @renec/api
+```
+
+### Test coverage
+To run test coverage, you can use the following command:
+```bash
+yarn test:cov --scope @renec/api
+```
+
+### Integration Test
+TBD
+
+### E2E Test
+TBD
 
 ## Usage
 After running the project, you can access the web application at https://localhost:3000
@@ -156,7 +177,7 @@ server {
 }
 ```
 
-### Docker Deployment
+### Docker Deployment (Kubernetes)
 (Note: This section is under development and will be updated in the future. Please refer to the project documentation or consult with the development team for the latest instructions on deploying the application using Docker.)
 
 Deploying the application using Docker provides a convenient way to package and distribute your project as a containerized application. Docker allows for consistent deployment across different environments, making it easier to manage dependencies and ensure reproducibility.
@@ -179,7 +200,8 @@ If you encounter any issues during the setup or usage of the project, refer to t
 
 ## Technical Debt
 There are some technical debt in this project, and I will try to fix it in the future:
-- [ ] Add unit tests
+- [ ] Add more unit tests
+- [ ] Add integration tests
 - [ ] Add e2e tests
 - [ ] Add Dockerfile for API server
 - [ ] Add Dockerfile for web application

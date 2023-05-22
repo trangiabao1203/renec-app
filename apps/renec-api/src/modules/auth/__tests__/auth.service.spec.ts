@@ -7,7 +7,7 @@ import { UserModule } from '../../users';
 import { CoreModule, JwtModule } from '@joktec/core';
 import { MongoModule } from '@joktec/mongo';
 
-describe('AuthService', () => {
+describe('AuthService class', () => {
   let authService: AuthService;
 
   beforeEach(async () => {

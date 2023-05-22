@@ -1,12 +1,29 @@
 {
   "name": "@renec/web",
-  "version": "0.0.1",
+  "description": "Renec - Web Service",
+  "version": "0.0.0",
+  "author": "Bao Tran",
   "private": true,
+  "license": "MIT",
+  "files": [],
+  "publishConfig": {
+    "access": "restricted"
+  },
   "scripts": {
+    "clean": "rimraf -rf dist",
+    "purge": "rimraf -rf node_modules",
+    "format": "prettier \"./src/**/*.{ts,tsx}\" --ignore-path ./.prettierignore --write",
+    "lint": "next lint",
+    "prebuild": "yarn clean",
+    "prepublishOnly": "yarn build",
     "dev": "next dev",
     "build": "next build",
     "serve": "next start",
-    "lint": "next lint"
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:cov": "jest --coverage",
+    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
+    "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
     "@types/node": "20.1.5",
@@ -30,5 +47,25 @@
   "devDependencies": {
     "@types/axios": "^0.14.0",
     "@types/localforage": "^0.0.34"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "prettier --write --ignore-path ./.prettierignore",
+      "eslint --fix"
+    ]
+  },
+  "jest": {
+    "passWithNoTests": true,
+    "preset": "ts-jest",
+    "rootDir": "src",
+    "transform": {
+      "^.+\\.(t|s)s$": "ts-jest"
+    },
+    "coverageDirectory": "<rootDir>/../coverage/",
+    "collectCoverageFrom": [
+      "**/*.{ts,tsx}",
+      "!**/index.{ts,tsx}",
+      "!**/*.{d,enum}.{ts,tsx}"
+    ]
   }
 }

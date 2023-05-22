@@ -10,7 +10,7 @@ export class AuthRepository {
       headers: { 'Content-Type': 'application/json' },
       data: { email, password },
     });
-    
+
     const accessToken = response?.data?.data?.accessToken || '';
     localStorage.setItem('token', accessToken);
 
@@ -20,7 +20,12 @@ export class AuthRepository {
     return profile;
   }
 
-  async register(body: {email: string, password: string, fullName: string, confirmedPassword: string}): Promise<Profile | null> {
+  async register(body: {
+    email: string;
+    password: string;
+    fullName: string;
+    confirmedPassword: string;
+  }): Promise<Profile | null> {
     const response = await axiosInstance.request<BaseResponse<TokenProfile>>({
       url: '/auth/register',
       method: 'POST',

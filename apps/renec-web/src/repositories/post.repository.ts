@@ -9,9 +9,9 @@ export class PostRepository {
       url: '/posts',
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
-      params: { 
-        populate: { author: '*' }, 
-       },
+      params: {
+        populate: { author: '*' },
+      },
     });
     return response?.data?.data?.items || [];
   }
@@ -21,13 +21,13 @@ export class PostRepository {
       url: '/posts',
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      data: { 
+      data: {
         title: videoInfo.title,
         description: videoInfo.description,
         image: videoInfo.thumbnail,
         thumbnail: videoInfo.thumbnail,
         link: videoInfo.url,
-        },
+      },
     });
     return response?.data?.data || null;
   }

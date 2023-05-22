@@ -19,12 +19,11 @@ const RegisterModal: React.FC<RegisterPopupProps> = ({ open, onClose, onSwitchTo
       password: (e.target as any).password.value,
       confirmedPassword: (e.target as any).confirmedPassword.value,
     };
-    authRepository.register(body).then((res) => {
+    authRepository.register(body).then(res => {
       if (res) {
         onClose();
       }
-    }
-    );
+    });
   };
 
   return (
