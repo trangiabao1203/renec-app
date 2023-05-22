@@ -1,41 +1,6 @@
 version: '3.8'
 
 services:
-  api:
-    container_name: renec-api
-    build:
-      context: ./apps/renec-api
-      dockerfile: Dockerfile
-    depends_on:
-      - mongo
-    environment:
-      - MONGO_HOST=mongo
-      - MONGO_PORT=27018
-      - MONGO_USER=renec
-      - MONGO_PASS=renec123
-      - MONGO_DB=sample_db
-    ports:
-      - '9010:9010'
-    restart: always
-    networks:
-      - renec-network
-
-  web:
-    container_name: renec-web
-    build:
-      context: ./apps/renec-web
-      dockerfile: Dockerfile
-    depends_on:
-      - mongo
-      - api
-    environment:
-      - API_HOST=http://api:9010
-    ports:
-      - '9020:3000'
-    restart: always
-    networks:
-      - renec-network
-
   mongo:
     container_name: renec-mongo
     image: mongo:4.4.18
@@ -58,7 +23,7 @@ services:
       test: echo 'db.runCommand("ping").ok' | mongo db:27017/speech-api --quiet
       interval: 30s
       timeout: 10s
-      retries: 5 
+      retries: 5
 
 # Docker Networks
 networks:

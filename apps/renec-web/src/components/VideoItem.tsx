@@ -17,7 +17,7 @@ const VideoItem: React.FC<Props> = ({ video, profile }) => {
   const [vote, setVote] = React.useState<VoteType>(VoteType.NONE);
 
   React.useEffect(() => {
-    if (profile === null) return;
+    if (!profile || !profile?._id) return;
     if (video.likeByIds.includes(profile._id)) {
       setVote(VoteType.UP);
     } else if (video.dislikeByIds.includes(profile._id)) {

@@ -1,14 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   env: {
-    webUrl: 'http://localhost:3000',
-    apiUrl: 'http://localhost:9010',
+    webUrl: process.env.WEB_URL,
+    apiUrl: process.env.API_URL
   },
   async rewrites() {
     return [
       {
         source: '/api/:path*',
-        destination: `http://localhost:9010/:path*`,
+        destination: `${process.env.API_URL}/:path*`
       },
     ];
   },
