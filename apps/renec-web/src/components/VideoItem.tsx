@@ -36,9 +36,9 @@ const VideoItem: React.FC<Props> = ({ video, profile }) => {
   };
 
   return (
-    <div className="w-full rounded overflow-hidden shadow-lg bg-white dark:bg-gray-800">
+    <div className="w-full rounded overflow-hidden shadow-lg bg-white dark:bg-gray-800 flex flex-col">
       <img className="w-full" src={video.thumbnail} alt={video.title} />
-      <div className="px-6 py-4">
+      <div className="px-6 py-4 flex-grow">
         <div className="font-bold text-xl mb-2 text-black dark:text-white">
           <a href={video.link} target="_blank" rel="noopener noreferrer">
             {video.title}
@@ -60,11 +60,10 @@ const VideoItem: React.FC<Props> = ({ video, profile }) => {
           <span className="font-bold">Description</span>: <span className="italic">{video.description}</span>
         </p>
       </div>
-      {!!profile && (
-        <div className="px-6 py-2 flex justify-end mb-2">
-          <VoteButton voted={vote} onVote={v => handleOnVote(v)}></VoteButton>
-        </div>
-      )}
+      <div className="px-6 py-2 flex justify-end mb-2">
+        <div className="flex-grow"></div>
+        <VoteButton voted={vote} onVote={v => handleOnVote(v)}></VoteButton>
+      </div>
     </div>
   );
 };
